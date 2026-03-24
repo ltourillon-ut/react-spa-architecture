@@ -5,19 +5,24 @@
   "scripts": {
     "build:folder-by-type": "pnpm --filter @apps/folder-by-type build",
     "build:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design build",
-    "build": "pnpm run build:folder-by-type && pnpm run build:feature-sliced-design",
+    "build:clean-architecture": "pnpm --filter @apps/clean-architecture build",
+    "build": "pnpm run build:folder-by-type && pnpm run build:feature-sliced-design && pnpm run build:clean-architecture",
     "dev:folder-by-type": "pnpm --filter @apps/folder-by-type dev",
     "dev:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design dev",
+    "dev:clean-architecture": "pnpm --filter @apps/clean-architecture dev",
     "dev": "pnpm --filter @apps/folder-by-type dev",
-    "lint:architecture": "pnpm run lint:feature-sliced-design",
+    "lint:architecture": "pnpm run lint:feature-sliced-design && pnpm run lint:clean-architecture",
+    "lint:clean-architecture": "pnpm --filter @apps/clean-architecture lint",
     "lint:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design lint",
     "msw:init": "msw init public",
     "preview:folder-by-type": "pnpm --filter @apps/folder-by-type preview",
     "preview:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design preview",
+    "preview:clean-architecture": "pnpm --filter @apps/clean-architecture preview",
     "preview": "pnpm --filter @apps/folder-by-type preview",
     "typecheck:folder-by-type": "pnpm --filter @apps/folder-by-type typecheck",
     "typecheck:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design typecheck",
-    "typecheck": "pnpm run typecheck:folder-by-type && pnpm run typecheck:feature-sliced-design"
+    "typecheck:clean-architecture": "pnpm --filter @apps/clean-architecture typecheck",
+    "typecheck": "pnpm run typecheck:folder-by-type && pnpm run typecheck:feature-sliced-design && pnpm run typecheck:clean-architecture"
   },
   "devDependencies": {
     "msw": "^2.12.14"
