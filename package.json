@@ -1,0 +1,20 @@
+{
+  "name": "react-spa-architecture",
+  "private": true,
+  "packageManager": "pnpm@10.22.0",
+  "scripts": {
+    "build": "pnpm --filter @apps/folder-by-type build",
+    "dev": "pnpm --filter @apps/folder-by-type dev",
+    "msw:init": "msw init public",
+    "preview": "pnpm --filter @apps/folder-by-type preview",
+    "typecheck": "pnpm --filter @apps/folder-by-type typecheck"
+  },
+  "devDependencies": {
+    "msw": "^2.12.14"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}
