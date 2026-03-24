@@ -7,6 +7,7 @@ Monorepo for React SPA architecture experiments.
 ```text
 apps/
   folder-by-type/
+  feature-sliced-design/
 mocks/
 public/
 ```
@@ -15,7 +16,10 @@ public/
 
 ```sh
 pnpm dev
+pnpm dev:feature-sliced-design
 pnpm build
 pnpm preview
+pnpm preview:feature-sliced-design
 pnpm typecheck
+pnpm lint:feature-sliced-design
 ```

@@ -3,11 +3,21 @@
   "private": true,
   "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "build": "pnpm --filter @apps/folder-by-type build",
+    "build:folder-by-type": "pnpm --filter @apps/folder-by-type build",
+    "build:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design build",
+    "build": "pnpm run build:folder-by-type && pnpm run build:feature-sliced-design",
+    "dev:folder-by-type": "pnpm --filter @apps/folder-by-type dev",
+    "dev:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design dev",
     "dev": "pnpm --filter @apps/folder-by-type dev",
+    "lint:architecture": "pnpm run lint:feature-sliced-design",
+    "lint:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design lint",
     "msw:init": "msw init public",
+    "preview:folder-by-type": "pnpm --filter @apps/folder-by-type preview",
+    "preview:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design preview",
     "preview": "pnpm --filter @apps/folder-by-type preview",
-    "typecheck": "pnpm --filter @apps/folder-by-type typecheck"
+    "typecheck:folder-by-type": "pnpm --filter @apps/folder-by-type typecheck",
+    "typecheck:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design typecheck",
+    "typecheck": "pnpm run typecheck:folder-by-type && pnpm run typecheck:feature-sliced-design"
   },
   "devDependencies": {
     "msw": "^2.12.14"
