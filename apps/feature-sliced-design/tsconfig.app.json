@@ -20,7 +20,7 @@
       "@/*": ["./src/*"],
       "@mocks/*": ["../../mocks/*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "vitest/globals"]
   },
   "include": ["src", "../../mocks"]
 }

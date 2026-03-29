@@ -19,6 +19,7 @@
     "preview:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design preview",
     "preview:clean-architecture": "pnpm --filter @apps/clean-architecture preview",
     "preview": "pnpm --filter @apps/folder-by-type preview",
+    "test:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design test",
     "typecheck:folder-by-type": "pnpm --filter @apps/folder-by-type typecheck",
     "typecheck:feature-sliced-design": "pnpm --filter @apps/feature-sliced-design typecheck",
     "typecheck:clean-architecture": "pnpm --filter @apps/clean-architecture typecheck",

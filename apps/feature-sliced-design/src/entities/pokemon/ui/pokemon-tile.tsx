@@ -1,4 +1,5 @@
 import { useQueryClient } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 import { pokemonQueries } from '../api'
@@ -12,6 +13,7 @@ type PokemonTileProps = {
 }
 
 export function PokemonTile({ pokemon }: PokemonTileProps) {
+  const { t } = useTranslation()
   const queryClient = useQueryClient()
 
   function prefetchPokemonDetail() {
@@ -27,7 +29,7 @@ export function PokemonTile({ pokemon }: PokemonTileProps) {
     >
       <div className="flex items-center justify-between text-xs uppercase tracking-[0.32em] text-slate-400">
         <span>{formatPokemonId(pokemon.id)}</span>
-        <span>{pokemon.types.length} type{pokemon.types.length > 1 ? 's' : ''}</span>
+        <span>{t('entities.pokemon.typeCount', { count: pokemon.types.length })}</span>
       </div>
 
       <div className="flex flex-1 items-center justify-center rounded-2xl bg-slate-950/80 p-4">

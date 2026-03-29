@@ -6,6 +6,7 @@ import { QueryProvider } from '@/app/providers'
 import { AppRouter } from '@/app/router'
 import '@/app/styles/index.css'
 import { queryClient } from '@/shared/api'
+import '@/shared/i18n'
 
 async function bootstrap() {
   await enableMocking()
