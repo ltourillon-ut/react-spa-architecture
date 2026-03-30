@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { describe, expect, it } from 'vitest'
 
-import { renderWithProviders, screen, waitFor } from '@/test/render'
+import { renderWithProviders, screen, waitFor } from '@/shared/testing/render'
 
 import { PokemonDetailPage } from './pokemon-detail-page'
 

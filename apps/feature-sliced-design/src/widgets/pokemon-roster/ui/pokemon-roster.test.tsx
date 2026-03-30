@@ -1,8 +1,8 @@
 import { http, HttpResponse } from 'msw'
 import { describe, expect, it } from 'vitest'
 
-import { renderWithProviders, screen, waitFor } from '@/test/render'
-import { server } from '@/test/setup'
+import { renderWithProviders, screen, waitFor } from '@/shared/testing/render'
+import { server } from '@/shared/testing/setup'
 
 import { PokemonRoster } from './pokemon-roster'
 

@@ -72,7 +72,7 @@ module.exports = {
               '**/node_modules/**',
               '**/*shared/_*',
               '**/*shared/_*/*',
-              '@/test/**',
+              '@/shared/testing/**',
               'api',
               'api/**',
               'assets',

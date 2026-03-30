@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { renderWithProviders, screen } from '@/test/render'
+import { renderWithProviders, screen } from '@/shared/testing/render'
 
 import { StatePanel } from './state-panel'
 
