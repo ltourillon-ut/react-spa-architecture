@@ -8,11 +8,12 @@ import { PokemonGrid } from './pokemon-grid'
 
 export function PokemonRoster() {
   const { t } = useTranslation()
-  const { data: pokemon, isPending } = useQuery(pokemonApi.pokemonQueries.list())
+  const { data: pokemon, isPending, isError, refetch } = useQuery(pokemonApi.pokemonQueries.list())
 
   if (isPending) {
     return (
       <StatePanel
+        data-testid="roster-loading"
         eyebrow={t('widgets.pokemonRoster.loadingEyebrow')}
         title={t('widgets.pokemonRoster.loadingTitle')}
         description={t('widgets.pokemonRoster.loadingDescription')}
@@ -20,9 +21,29 @@ export function PokemonRoster() {
     )
   }
 
+  if (isError) {
+    return (
+      <StatePanel
+        data-testid="roster-error"
+        eyebrow={t('widgets.pokemonRoster.errorEyebrow')}
+        title={t('widgets.pokemonRoster.errorTitle')}
+        description={t('widgets.pokemonRoster.errorDescription')}
+        action={
+          <button
+            onClick={() => void refetch()}
+            className="rounded-full bg-cyan-300 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+          >
+            {t('widgets.pokemonRoster.retryButton')}
+          </button>
+        }
+      />
+    )
+  }
+
   if (!pokemon || pokemon.length === 0) {
     return (
       <StatePanel
+        data-testid="roster-empty"
         eyebrow={t('widgets.pokemonRoster.emptyEyebrow')}
         title={t('widgets.pokemonRoster.emptyTitle')}
         description={t('widgets.pokemonRoster.emptyDescription')}

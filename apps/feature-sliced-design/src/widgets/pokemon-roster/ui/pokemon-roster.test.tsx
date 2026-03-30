@@ -10,8 +10,7 @@ describe('PokemonRoster', () => {
   it('shows loading state initially', () => {
     renderWithProviders(<PokemonRoster />)
 
-    expect(screen.getByText('Loading Pokedex')).toBeInTheDocument()
-    expect(screen.getByText('Fetching the first generation Pokemon roster.')).toBeInTheDocument()
+    expect(screen.getByTestId('roster-loading')).toBeInTheDocument()
   })
 
   it('renders pokemon list after data loads', async () => {
@@ -43,9 +42,23 @@ describe('PokemonRoster', () => {
     renderWithProviders(<PokemonRoster />)
 
     await waitFor(() => {
-      expect(screen.getByText('No Pokemon found')).toBeInTheDocument()
+      expect(screen.getByTestId('roster-empty')).toBeInTheDocument()
+    })
+  })
+
+  it('shows error state and retry button when request fails', async () => {
+    server.use(
+      http.get('/api/pokemon', () => {
+        return HttpResponse.error()
+      }),
+    )
+
+    renderWithProviders(<PokemonRoster />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('roster-error')).toBeInTheDocument()
     })
 
-    expect(screen.getByText('Empty roster')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument()
   })
 })

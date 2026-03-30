@@ -20,6 +20,10 @@ export const en = {
       emptyTitle: 'No Pokemon found',
       emptyDescription:
         'The mocked BFF responded successfully but did not return any Pokemon to display.',
+      errorEyebrow: 'Error',
+      errorTitle: 'Failed to load Pokedex',
+      errorDescription: 'Something went wrong while fetching the Pokemon roster.',
+      retryButton: 'Try again',
       dataEyebrow: 'Original 151',
       dataTitle: 'Generation I Pokedex',
       dataDescription:
@@ -32,6 +36,10 @@ export const en = {
       loadingEyebrow: 'Loading',
       loadingTitle: 'Loading Pokemon detail',
       loadingDescription: 'Fetching the selected Pokemon entry.',
+      errorEyebrow: 'Error',
+      errorTitle: 'Failed to load Pokemon',
+      errorDescription: 'Something went wrong while fetching this Pokemon.',
+      retryButton: 'Try again',
       detailLabel: 'Pokemon Detail',
       heightLabel: 'Height',
       weightLabel: 'Weight',

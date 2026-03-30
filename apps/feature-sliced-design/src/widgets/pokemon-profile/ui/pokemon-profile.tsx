@@ -11,14 +11,34 @@ type PokemonProfileProps = {
 
 export function PokemonProfile({ id }: PokemonProfileProps) {
   const { t } = useTranslation()
-  const { data: pokemon, isPending } = useQuery(pokemonApi.pokemonQueries.detail({ id }))
+  const { data: pokemon, isPending, isError, refetch } = useQuery(pokemonApi.pokemonQueries.detail({ id }))
 
   if (isPending) {
     return (
       <StatePanel
+        data-testid="profile-loading"
         eyebrow={t('widgets.pokemonProfile.loadingEyebrow')}
         title={t('widgets.pokemonProfile.loadingTitle')}
         description={t('widgets.pokemonProfile.loadingDescription')}
+      />
+    )
+  }
+
+  if (isError) {
+    return (
+      <StatePanel
+        data-testid="profile-error"
+        eyebrow={t('widgets.pokemonProfile.errorEyebrow')}
+        title={t('widgets.pokemonProfile.errorTitle')}
+        description={t('widgets.pokemonProfile.errorDescription')}
+        action={
+          <button
+            onClick={() => void refetch()}
+            className="rounded-full bg-cyan-300 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+          >
+            {t('widgets.pokemonProfile.retryButton')}
+          </button>
+        }
       />
     )
   }

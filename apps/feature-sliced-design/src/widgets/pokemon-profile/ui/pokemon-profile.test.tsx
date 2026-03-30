@@ -1,6 +1,8 @@
+import { http, HttpResponse } from 'msw'
 import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders, screen, waitFor } from '@/test/render'
+import { server } from '@/test/setup'
 
 import { PokemonProfile } from './pokemon-profile'
 
@@ -8,8 +10,7 @@ describe('PokemonProfile', () => {
   it('shows loading state initially', () => {
     renderWithProviders(<PokemonProfile id={1} />)
 
-    expect(screen.getByText('Loading Pokemon detail')).toBeInTheDocument()
-    expect(screen.getByText('Fetching the selected Pokemon entry.')).toBeInTheDocument()
+    expect(screen.getByTestId('profile-loading')).toBeInTheDocument()
   })
 
   it('renders pokemon details after data loads', async () => {
@@ -53,11 +54,9 @@ describe('PokemonProfile', () => {
     renderWithProviders(<PokemonProfile id={1} />)
 
     await waitFor(() => {
-      expect(screen.getByText('Back to the Pokedex')).toBeInTheDocument()
+      const link = screen.getByRole('link', { name: /back to the pokedex/i })
+      expect(link).toHaveAttribute('href', '/')
     })
-
-    const link = screen.getByRole('link', { name: /back to the pokedex/i })
-    expect(link).toHaveAttribute('href', '/')
   })
 
   it('renders type badges for the pokemon', async () => {
@@ -68,5 +67,21 @@ describe('PokemonProfile', () => {
     })
 
     expect(screen.getByText('Poison')).toBeInTheDocument()
+  })
+
+  it('shows error state and retry button when request fails', async () => {
+    server.use(
+      http.get('/api/pokemon/:id', () => {
+        return HttpResponse.error()
+      }),
+    )
+
+    renderWithProviders(<PokemonProfile id={1} />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('profile-error')).toBeInTheDocument()
+    })
+
+    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument()
   })
 })

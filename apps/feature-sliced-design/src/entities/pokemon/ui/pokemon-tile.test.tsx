@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders, screen } from '@/test/render'
 
-import { buildPokemonSummary } from '../model/pokemon-summary.builder'
+import { buildPokemonSummary } from '../model/pokemon-summary.factory'
 
 import { PokemonTile } from './pokemon-tile'
 

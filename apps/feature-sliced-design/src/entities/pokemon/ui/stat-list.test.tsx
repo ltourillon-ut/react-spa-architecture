@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders, screen } from '@/test/render'
 
-import { buildPokemonStat } from '../model/pokemon-detail.builder'
+import { buildPokemonStat } from '../model/pokemon-detail.factory'
 
 import { StatList } from './stat-list'
 
