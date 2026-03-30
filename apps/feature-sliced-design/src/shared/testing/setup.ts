@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom/vitest'
 import '@/shared/i18n'
 
-import { handlers } from '@mocks/handlers'
 import { cleanup } from '@testing-library/react'
-import { setupServer } from 'msw/node'
 import { afterAll, afterEach, beforeAll } from 'vitest'
 
-export const server = setupServer(...handlers)
+import { server } from './server'
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }))
 afterEach(() => {

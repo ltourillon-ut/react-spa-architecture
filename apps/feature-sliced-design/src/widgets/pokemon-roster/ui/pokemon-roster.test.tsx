@@ -2,7 +2,7 @@ import { http, HttpResponse } from 'msw'
 import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders, screen, waitFor } from '@/shared/testing/render'
-import { server } from '@/shared/testing/setup'
+import { server } from '@/shared/testing/server'
 
 import { PokemonRoster } from './pokemon-roster'
 
